@@ -12,18 +12,18 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <form th:action="@{/login/?}" method="post">
+                <form th:action="@{/login/autenticar}" method="POST">
                     <div class="mt-5 mb-4">
                         <h1>Login</h1>
                     </div>
 
-                    <div class="alert alert-danger" role="alert">
-                        <span>Error: Debe completar Correctamente sus credenciales</span>
+                    <div class="alert alert-danger" role="alert" th:if="${loginModel.codigo} != '00'">
+                        <span th:text="${loginModel.mensaje}"></span>
                     </div>
 
                     <div class="mb-3">
                         <select id="tipoDocumento" name="tipoDocumento" class="form-select form-select-lg">
-                            <option value="" disabled selected>--Seleccionar--</option>
+                            <option selected>--Seleccionar--</option>
                             <option value="1">DNI</option>
                             <option value="2">CEX</option>
                             <option value="3">PAS</option>
